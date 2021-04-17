@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model IndexViewModel
+
+
+<style>
+    table, th, td {
+        padding: 15px;
+        align-content: center;
+    }
+    /*Add differentiating rows*/
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<!--Create table that allows you to print out contents of Bowlers.cs-->
+<div class="align-items-center">
+    <table style="width:100%; height: 100%;">
+        <tr>
+            <th>First Name</th>
+            <th>Mid Init.</th>
+            <th>Last Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
+            <th>Phone Number</th>
+        </tr>
+
+        @foreach (var x in Model.Bowlers)
+        {
+            <tr>
+                <td>@x.BowlerFirstName</td>
+                <td>@x.BowlerMiddleInit</td>
+                <td>@x.BowlerLastName</td>
+                <td>@x.BowlerAddress</td>
+                <td>@x.BowlerCity</td>
+                <td>@x.BowlerState</td>
+                <td>@x.BowlerZip</td>
+                <td>@x.BowlerPhoneNumber</td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+<!--Page numbering-->
+<div class="text-center" page-info="@Model.PageNumberingInfo" page-url-teamname="@Model.TeamName">  </div>

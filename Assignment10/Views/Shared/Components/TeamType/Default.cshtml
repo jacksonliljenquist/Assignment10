@@ -1,0 +1,72 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model IEnumerable<Teams>
+
+    <style>
+        /* Dropdown Button */
+        .dropbtn {
+            background-color: darkblue;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+        }
+
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            /* Links inside the dropdown */
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                /* Change color of dropdown links on hover */
+                .dropdown-content a:hover {
+                    background-color: #ddd;
+                }
+
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Change the background color of the dropdown button when the dropdown content is shown */
+        .dropdown:hover .dropbtn {
+            background-color: darkblue;
+        }
+    </style>
+
+    <!--Create Dropdown menu that displays different Team name options-->
+    <div class="dropdown">
+        <button class="dropbtn">Filter by Team</button>
+        <div class="dropdown-content">
+            <a class="btn btn-block btn-outline-secondary" asp-action="Index" asp-controller="Home" asp-route-teaminfo="">Home</a>
+
+            <!--Iterate through teams-->
+            @foreach (var x in Model)
+            {
+                <a class="btn btn-block btn-outline-secondary" asp-action="Index" asp-controller="Home" asp-route-teaminfo="@x.TeamId" asp-route-teamname="@x.TeamName">@x.TeamName</a>
+            }
+        </div>
+    </div>
+   
